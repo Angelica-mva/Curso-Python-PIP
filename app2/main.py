@@ -1,6 +1,7 @@
 import utils
 import read_csv
 import chart
+import pandas as pd
 
 def run():
   data = read_csv.read_csv('data.csv')
