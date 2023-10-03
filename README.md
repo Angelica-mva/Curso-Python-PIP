@@ -7,7 +7,7 @@ cd game
 python3 main.py
 ```
 
-# App Project
+# Poblacion_Mundial Project
 
 ```sh
 git clone
