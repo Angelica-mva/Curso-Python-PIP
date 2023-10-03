@@ -1,15 +1,24 @@
 import utils
 import read_csv
 import charts
+import pandas as pd
 
 def run():
-  data = read_csv.read_csv('data.csv')
+  '''
   data = list(filter(lambda item : item['Continent'] == 'South America',data))
-
   countries = list(map(lambda x: x['Country/Territory'], data))
   percentages = list(map(lambda x: x['World Population Percentage'], data))
-  charts.generate_pie_chart(countries, percentages)
+  '''
+
+  df = pd.read_csv('data.csv') #Con esto pasamos el csv a diccionario y reemplaza el algoritmo de read_csv.py
+  df = df[df['Continent'] == 'Africa'] #con esta reemplazamos el resultado de filtrar por paises de sur America de la variable data
   
+  countries = df['Country/Territory'].values #Con esto obtenemos los valores de la columna
+  percentages = df['World Population Percentage'].values
+
+  charts.generate_pie_chart(countries, percentages) #Esta es la grafica que vamos a hacer con pandas  
+
+  data = read_csv.read_csv('data.csv')
   country = input('Type Country => ')
 
   result = utils.population_by_country(data, country)
